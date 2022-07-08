@@ -55,7 +55,7 @@ Cloning a repository
 
 - run `npm install` to install all dependencies;
 
-- run `npm run start` to start the application locally.
+- run `npm start` to start the application locally.
 
 
 ## Author
