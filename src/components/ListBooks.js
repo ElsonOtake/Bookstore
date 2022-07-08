@@ -6,11 +6,11 @@ const ListBooks = () => {
     id: 1,
     name: 'The Hunger Games',
     author: 'Suzanne Collins',
-  },{
+  }, {
     id: 2,
     name: 'Dune',
     author: 'Frank Herbert',
-  },{
+  }, {
     id: 3,
     name: 'Capital in the Twenty-First Century',
     author: 'Suzanne Collins',
