@@ -18,7 +18,7 @@ nav ul {
 }
 
 nav li {
-  font-family: Montserrat;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 0.813rem;
   letter-spacing: 1.9px;
   color: #121212;
@@ -30,7 +30,7 @@ a {
 }
 
 nav h1 {
-  font-family: Montserrat;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 1.875rem;
   font-weight: bold;
   color: #0290ff;
@@ -45,12 +45,17 @@ article {
 }
 
 article h2 {
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
   font-weight: bold;
-  size: 1.375rem;
+  font-size: 1.375rem;
   letter-spacing: -0.2px;
   color: #121212;
   padding-top: 0.25rem;
+}
+
+section button {
+  padding: 1rem 2rem;
+  margin: 1rem 6.25rem 1rem;
 }
 
 article button {
@@ -80,14 +85,9 @@ form input[type=submit] {
 }
 
 .text_style_6 {
-  font-family: RobotoSlab;
-  font-weight:lighter;
-  size: 0.875rem;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
   color: #4386bf;
   letter-spacing: 0;
-}
-
-section button {
-  padding: 1rem 2rem;
-  margin: 1rem 6.25rem 1rem;
 }
