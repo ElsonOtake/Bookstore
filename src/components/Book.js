@@ -19,11 +19,9 @@ const Comments = () => <li>Comments</li>;
 
 const Remove = () => {
   const removeBook = () => {
-    
-  }
-  return (
-    <li onClick={removeBook}>Remove</li>
-  )
+
+  };
+  return <button type="button" onClick={removeBook}>Remove</button>;
 };
 
 const Edit = () => <li>Edit</li>;
