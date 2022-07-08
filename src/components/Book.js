@@ -6,16 +6,16 @@ const Book = (props) => {
     <article>
       <h2 className="name">{name}</h2>
       <p className="author text_style_6">{author}</p>
-      <ul className="text_style_6">
+      <span className="text_style_6">
         <Comments />
         <Remove />
         <Edit />
-      </ul>
+      </span>
     </article>
   );
 };
 
-const Comments = () => <li>Comments</li>;
+const Comments = () => <button type="button">Comments</button>;
 
 const Remove = () => {
   const removeBook = () => {
@@ -24,6 +24,6 @@ const Remove = () => {
   return <button type="button" onClick={removeBook}>Remove</button>;
 };
 
-const Edit = () => <li>Edit</li>;
+const Edit = () => <button type="button">Edit</button>;
 
 export default Book;
