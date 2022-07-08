@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+nav {
+  display: flex;
+  margin: 1rem 6.25rem 1rem;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  font-family: Montserrat;
+  font-size: 0.813rem;
+  letter-spacing: 1.9px;
+  color: #121212;
+  padding-left: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav h1 {
+  font-family: Montserrat;
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #0290ff;
+}
+
+article {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 0.1rem solid #e8e8e8;
+  margin: 2.375rem 6.25rem 0.938rem;
+}
+
+article h2 {
+  font-family: RobotoSlab;
+  font-weight: bold;
+  size: 1.375rem;
+  letter-spacing: -0.2px;
+  color: #121212;
+  padding-top: 0.25rem;
+}
+
+article button {
+  border: none;
+  background-color: transparent;
+  padding: 0 1rem;
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 1.75rem;
+  border-right: 0.1rem solid gray;
+}
+
+article button:first-child {
+  padding-left: 0;
+}
+
+article button:last-child {
+  border-right: none;
+}
+
+form {
+  margin: 1rem 6.25rem 1rem;
+}
+
+form input[type=submit] {
+  cursor: pointer;
+}
+
+.text_style_6 {
+  font-family: RobotoSlab;
+  font-weight:lighter;
+  size: 0.875rem;
+  color: #4386bf;
+  letter-spacing: 0;
+}
+
+section button {
+  padding: 1rem 2rem;
+  margin: 1rem 6.25rem 1rem;
+}
