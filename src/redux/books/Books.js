@@ -7,6 +7,17 @@ const REMOVE = 'bookstore/books/REMOVE';
 
 const initialState = [];
 
+export const addBook = (title, author) => ({
+  type: ADD,
+  title,
+  author,
+});
+
+export const removeBook = (id) => ({
+  type: REMOVE,
+  id,
+});
+
 const Books = () => (
   <>
     <ListBooks />
