@@ -8,7 +8,7 @@ export const checkStatus = () => ({
   type: CHECK_STATUS,
 });
 
-const statusReducer = (state = initialState, action) => {
+const statusReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHECK_STATUS:
       return ['Under construction'];
