@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
-  const { name, author } = props;
+  const { title, author } = props;
   return (
     <article>
-      <h2 className="name">{name}</h2>
+      <h2 className="title">{title}</h2>
       <p className="author text_style_6">{author}</p>
       <span>
         <Comments />
@@ -28,12 +28,12 @@ const Remove = () => {
 const Edit = () => <button type="button" className="text_style_6">Edit</button>;
 
 Book.defaultProps = {
-  name: '',
+  title: '',
   author: '',
 };
 
 Book.propTypes = {
-  name: PropTypes.string,
+  title: PropTypes.string,
   author: PropTypes.string,
 };
 
