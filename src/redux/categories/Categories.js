@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CHECK_STATUS = 'bookstore/categories/CHECK_STATUS';
 
 const initialState = [];
@@ -16,13 +14,5 @@ const statusReducer = (state = initialState, action = {}) => {
       return state;
   }
 };
-
-export const Categories = () => (
-  <section>
-    <button type="button">
-      Check status
-    </button>
-  </section>
-);
 
 export default statusReducer;
