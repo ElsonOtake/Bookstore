@@ -8,7 +8,16 @@ export const checkStatus = () => ({
   type: CHECK_STATUS,
 });
 
-const Categories = () => (
+const statusReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case CHECK_STATUS:
+      return ['Under construction'];
+    default:
+      return state;
+  }
+};
+
+export const Categories = () => (
   <section>
     <button type="button">
       Check status
@@ -16,4 +25,4 @@ const Categories = () => (
   </section>
 );
 
-export default Categories;
+export default statusReducer;
