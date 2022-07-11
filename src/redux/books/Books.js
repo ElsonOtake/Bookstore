@@ -5,6 +5,8 @@ import AddBook from '../../components/AddBook';
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 
+const initialState = [];
+
 const Books = () => (
   <>
     <ListBooks />
