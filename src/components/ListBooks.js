@@ -1,8 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Book from './Book';
 
 const ListBooks = () => {
-  const booksData = [];
+  const booksData = useSelector((state) => state.booksReducer);
 
   return (
     <ul className="books_list">
