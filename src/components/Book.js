@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Comments from './Comments';
+import Remove from './Remove';
+import Edit from './Edit';
 
 const Book = (props) => {
-  const { title, author } = props;
+  const { id, title, author } = props;
   return (
     <article>
-      <h2 className="title">{title}</h2>
-      <p className="author text_style_6">{author}</p>
+      <h2 className={id}>{title}</h2>
+      <p className="text_style_6">{author}</p>
       <span>
         <Comments />
         <Remove />
@@ -16,23 +19,14 @@ const Book = (props) => {
   );
 };
 
-const Comments = () => <button type="button" className="text_style_6">Comments</button>;
-
-const Remove = () => {
-  const removeBook = () => {
-
-  };
-  return <button type="button" className="text_style_6" onClick={removeBook}>Remove</button>;
-};
-
-const Edit = () => <button type="button" className="text_style_6">Edit</button>;
-
 Book.defaultProps = {
+  id: '',
   title: '',
   author: '',
 };
 
 Book.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
 };

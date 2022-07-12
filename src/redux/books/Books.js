@@ -3,9 +3,21 @@ import { v4 as uuidv4 } from 'uuid';
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 
-const initialState = [];
+const initialState = [{
+  id: '1',
+  title: 'The Hunger Games',
+  author: 'Suzanne Collins',
+}, {
+  id: '2',
+  title: 'Dune',
+  author: 'Frank Herbert',
+}, {
+  id: '3',
+  title: 'Capital in the Twenty-First Century',
+  author: 'Suzanne Collins',
+}];
 
-export const addBook = (title, author) => ({
+export const addNewBook = (title, author) => ({
   type: ADD,
   id: uuidv4(),
   title,
