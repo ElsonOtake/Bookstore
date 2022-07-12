@@ -4,15 +4,15 @@ const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 
 const initialState = [{
-  id: 1,
+  id: '1',
   title: 'The Hunger Games',
   author: 'Suzanne Collins',
 }, {
-  id: 2,
+  id: '2',
   title: 'Dune',
   author: 'Frank Herbert',
 }, {
-  id: 3,
+  id: '3',
   title: 'Capital in the Twenty-First Century',
   author: 'Suzanne Collins',
 }];
