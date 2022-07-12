@@ -13,13 +13,13 @@ const Categories = () => {
 
   return (
     <section>
-      <h2>{message}</h2>
       <button
         type="button"
         onClick={onClick}
       >
         Check status
       </button>
+      <h2>{message}</h2>
     </section>
   );
 };

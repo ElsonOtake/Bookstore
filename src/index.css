@@ -71,10 +71,18 @@ article p {
   background-color: white;
 }
 
+section {
+  margin: 1rem 6.25rem;
+}
+
 section button {
   padding: 1rem 2rem;
-  margin: 1rem 6.25rem 1rem;
   background-color: white;
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: red;
 }
 
 article span {
