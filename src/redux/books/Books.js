@@ -17,7 +17,7 @@ const initialState = [{
   author: 'Suzanne Collins',
 }];
 
-export const addBook = (title, author) => ({
+export const addNewBook = (title, author) => ({
   type: ADD,
   id: uuidv4(),
   title,
