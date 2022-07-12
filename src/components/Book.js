@@ -1,7 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeBook } from '../redux/books/Books';
+import Comments from './Comments';
+import Remove from './Remove';
+import Edit from './Edit';
 
 const Book = (props) => {
   const { id, title, author } = props;
@@ -17,20 +18,6 @@ const Book = (props) => {
     </article>
   );
 };
-
-const Comments = () => <button type="button" className="text_style_6">Comments</button>;
-
-const Remove = () => {
-  const removeBookById = (event) => {
-    const { target } = event;
-    const id = target.parentNode.parentNode.firstChild.classList[0];
-    const dispatch = useDispatch();
-    dispatch(removeBook(id));
-  };
-  return <button type="button" className="text_style_6" onClick={removeBookById}>Remove</button>;
-};
-
-const Edit = () => <button type="button" className="text_style_6">Edit</button>;
 
 Book.defaultProps = {
   id: '',
