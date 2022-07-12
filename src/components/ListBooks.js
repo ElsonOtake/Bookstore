@@ -9,7 +9,11 @@ const ListBooks = () => {
     <ul className="books_list">
       {booksData.map((data) => (
         <li key={data.id}>
-          <Book title={data.title} author={data.author} />
+          <Book
+            id={data.id}
+            title={data.title}
+            author={data.author}
+          />
         </li>
       ))}
     </ul>
