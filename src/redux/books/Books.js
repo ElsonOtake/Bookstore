@@ -1,14 +1,12 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
+import { axiosGet } from '../api';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 const RETRIEVE = 'bookstore/books/RETRIEVE';
 
-const urlBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/lXjl7zLtbljcIl0TN0v2/books';
-
-const initialState = [{
+const initialStateOld = [{
   id: '1',
   title: 'The Hunger Games',
   author: 'Suzanne Collins',
@@ -22,20 +20,44 @@ const initialState = [{
   author: 'Suzanne Collins',
 }];
 
+const initialState = {
+  entities: [],
+  loading: false,
+};
+
 export const retrieveBooks = createAsyncThunk(
   RETRIEVE,
-  async (dispatch) => {
-    try {
-      const res = await axios.get(urlBooks);
-      dispatch({
-        type: RETRIEVE,
-        payload: res.data,
-      });
-    } catch (err) {
-      console.error(err);
-    }
+  async () => {
+    const res = await axiosGet()
+      .then(
+        (data) => data.json(),
+      );
+    return res;
   },
 );
+
+export const bookSlice = createSlice({
+  name: 'bookSlice',
+  initialState,
+  reducers: {},
+  extraReducers: {
+    [retrieveBooks.pending]: (state) => ({
+      ...state,
+      loading: true,
+    }),
+    [retrieveBooks.fulfilled]: (state, action) => ({
+      ...state,
+      loading: false,
+      entities: action.payload,
+    }),
+    [retrieveBooks.rejected]: (state) => ({
+      ...state,
+      loading: false,
+    }),
+  },
+});
+
+export const bookAPIReducer = bookSlice.reducer;
 
 export const addNewBook = (title, author) => ({
   type: ADD,
@@ -49,7 +71,7 @@ export const removeBook = (id) => ({
   id,
 });
 
-const booksReducer = (state = initialState, action = {}) => {
+const booksReducer = (state = initialStateOld, action = {}) => {
   switch (action.type) {
     case ADD:
       return [
