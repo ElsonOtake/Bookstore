@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import { retrieveBooks } from '../redux/books/Books';
@@ -7,13 +7,9 @@ const ListBooks = () => {
   const booksData = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
-  dispatch(retrieveBooks())
-    .then((response) => {
-      console.log('ListBooks', response);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
+  useEffect(() => {
+    dispatch(retrieveBooks());
+  }, []);
 
   return (
     <ul className="books_list">
