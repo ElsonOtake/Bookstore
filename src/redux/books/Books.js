@@ -1,7 +1,12 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
+const RETRIEVE = 'bookstore/books/RETRIEVE';
+
+const urlBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/lXjl7zLtbljcIl0TN0v2/books';
 
 const initialState = [{
   id: '1',
@@ -16,6 +21,21 @@ const initialState = [{
   title: 'Capital in the Twenty-First Century',
   author: 'Suzanne Collins',
 }];
+
+export const retrieveBooks = createAsyncThunk(
+  RETRIEVE,
+  async (dispatch) => {
+    try {
+      const res = await axios.get(urlBooks);
+      dispatch({
+        type: RETRIEVE,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
+);
 
 export const addNewBook = (title, author) => ({
   type: ADD,
@@ -42,6 +62,8 @@ const booksReducer = (state = initialState, action = {}) => {
       ];
     case REMOVE:
       return state.filter((book) => book.id !== action.id);
+    case RETRIEVE:
+      return state;
     default:
       return state;
   }
