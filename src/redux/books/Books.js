@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { axiosGet, axiosPost } from '../api';
+import { axiosGet, axiosPost, axiosDelete } from '../api';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
@@ -74,10 +74,13 @@ export const addNewBook = createAsyncThunk(
   },
 );
 
-export const removeBook = (id) => ({
-  type: REMOVE,
-  id,
-});
+export const removeBook = createAsyncThunk(
+  REMOVE,
+  async (id) => {
+    const res = await axiosDelete(id);
+    return res;
+  },
+);
 
 const booksReducer = (state = initialStateOld, action = {}) => {
   switch (action.type) {
