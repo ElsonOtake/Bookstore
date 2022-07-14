@@ -61,16 +61,8 @@ export const bookSlice = createSlice({
 
 export const booksAPIReducer = bookSlice.reducer;
 
-// export const addNewBook = (title, author) => ({
-//   type: ADD,
-//   id: uuidv4(),
-//   title,
-//   author,
-// });
-
 export const addNewBook = createAsyncThunk(
   ADD,
-  // async () => {
   async ([title, author]) => {
     const res = await axiosPost({
       item_id: uuidv4(),
@@ -78,9 +70,6 @@ export const addNewBook = createAsyncThunk(
       title,
       author,
     });
-    // .then(
-    //   (data) => data.json(),
-    // );
     return res;
   },
 );
