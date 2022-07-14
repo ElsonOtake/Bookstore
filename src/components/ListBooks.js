@@ -4,7 +4,7 @@ import Book from './Book';
 import { retrieveBooks } from '../redux/books/Books';
 
 const ListBooks = () => {
-  const booksData = useSelector((state) => state.booksAPIReducer.entities.payload);
+  const booksData = useSelector((state) => state.booksAPIReducer.entities);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const ListBooks = () => {
 
   return (
     <ul className="books_list">
-      {booksData.map((data) => (
+      {booksData ? booksData.payload.map((data) => (
         <li key={data.id}>
           <Book
             id={data.id}
@@ -21,7 +21,7 @@ const ListBooks = () => {
             author={data.author}
           />
         </li>
-      ))}
+      )) : <li>No books</li>}
     </ul>
   );
 };
