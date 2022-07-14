@@ -25,16 +25,22 @@ const Book = (props) => {
 
   return (
     <article>
-      <p className="category text_style_5">{category[Math.floor(Math.random() * 10)]}</p>
-      <h2 className={id}>{title}</h2>
-      <p className="text_style_6">{author}</p>
-      <span>
-        <Comments />
-        <Remove />
-        <Edit />
-      </span>
+      <div className="books_data">
+        <p className="category text_style_5">{category[Math.floor(Math.random() * 10)]}</p>
+        <h2 className={id}>{title}</h2>
+        <p className="text_style_6">{author}</p>
+        <span>
+          <Comments />
+          <Remove />
+          <Edit />
+        </span>
+      </div>
       <div className="progress_data">
-        <CircularProgressbar value={progress} />
+        <div className="progress_bar">
+          <CircularProgressbar
+            value={progress}
+          />
+        </div>
         <div className="completed_data">
           <p className="completed">{`${progress}%`}</p>
           <p>Completed</p>
