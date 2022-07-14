@@ -19,3 +19,12 @@ export const axiosPost = async (obj = {}) => {
     throw new Error(error);
   }
 };
+
+export const axiosDelete = async (id) => {
+  try {
+    const response = await axios.delete(`${urlBooks}/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
