@@ -15,7 +15,9 @@ const Header = () => (
           </li>
         </ul>
       </div>
-      <span className="material-icons-outlined">
+      <span
+        className="material-icons-outlined md-36 md-blue"
+      >
         person_outline
       </span>
     </nav>
