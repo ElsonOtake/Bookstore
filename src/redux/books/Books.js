@@ -1,27 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
 import { axiosGet, axiosPost, axiosDelete } from '../api';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 const RETRIEVE = 'bookstore/books/RETRIEVE';
 
-const initialStateOld = [{
-  id: '1',
-  title: 'The Hunger Games',
-  author: 'Suzanne Collins',
-}, {
-  id: '2',
-  title: 'Dune',
-  author: 'Frank Herbert',
-}, {
-  id: '3',
-  title: 'Capital in the Twenty-First Century',
-  author: 'Suzanne Collins',
-}];
-
 const initialState = {
-  entities: [],
   loading: false,
 };
 
@@ -39,6 +23,42 @@ export const retrieveBooks = createAsyncThunk(
   },
 );
 
+export const addNewBook = createAsyncThunk(
+  ADD,
+  async ([itemId, title, author, category], { dispatch }) => {
+    const res = await axiosPost({
+      item_id: itemId,
+      category,
+      title,
+      author,
+    })
+      .then(
+        () => dispatch({
+          type: ADD,
+          id: itemId,
+          category,
+          title,
+          author,
+        }),
+      );
+    return res;
+  },
+);
+
+export const removeBook = createAsyncThunk(
+  REMOVE,
+  async (id, { dispatch }) => {
+    const res = await axiosDelete(id)
+      .then(
+        () => dispatch({
+          type: REMOVE,
+          id,
+        }),
+      );
+    return res;
+  },
+);
+
 export const bookSlice = createSlice({
   name: 'bookSlice',
   initialState,
@@ -47,12 +67,35 @@ export const bookSlice = createSlice({
       ...state,
       loading: true,
     }),
-    [retrieveBooks.fulfilled]: (state, action) => ({
+    [retrieveBooks.fulfilled]: (state) => ({
       ...state,
       loading: false,
-      entities: action.payload,
     }),
     [retrieveBooks.rejected]: (state) => ({
+      ...state,
+      loading: false,
+    }),
+    [addNewBook.pending]: (state) => ({
+      ...state,
+      loading: true,
+    }),
+    [addNewBook.fulfilled]: (state) => ({
+      ...state,
+      loading: false,
+    }),
+    [addNewBook.rejected]: (state) => ({
+      ...state,
+      loading: false,
+    }),
+    [removeBook.pending]: (state) => ({
+      ...state,
+      loading: true,
+    }),
+    [removeBook.fulfilled]: (state) => ({
+      ...state,
+      loading: false,
+    }),
+    [removeBook.rejected]: (state) => ({
       ...state,
       loading: false,
     }),
@@ -61,28 +104,7 @@ export const bookSlice = createSlice({
 
 export const booksAPIReducer = bookSlice.reducer;
 
-export const addNewBook = createAsyncThunk(
-  ADD,
-  async ([title, author]) => {
-    const res = await axiosPost({
-      item_id: uuidv4(),
-      category: 'API',
-      title,
-      author,
-    });
-    return res;
-  },
-);
-
-export const removeBook = createAsyncThunk(
-  REMOVE,
-  async (id) => {
-    const res = await axiosDelete(id);
-    return res;
-  },
-);
-
-const booksReducer = (state = initialStateOld, action = {}) => {
+const booksReducer = (state = [], action = {}) => {
   switch (action.type) {
     case ADD:
       return [
@@ -91,12 +113,13 @@ const booksReducer = (state = initialStateOld, action = {}) => {
           id: action.id,
           title: action.title,
           author: action.author,
+          category: action.category,
         },
       ];
     case REMOVE:
       return state.filter((book) => book.id !== action.id);
     case RETRIEVE:
-      return state;
+      return action.payload;
     default:
       return state;
   }
