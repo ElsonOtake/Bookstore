@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { addNewBook } from '../redux/books/Books';
 
 const AddBook = () => {
@@ -23,7 +24,7 @@ const AddBook = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(addNewBook([state.bookTitle, state.bookAuthor]));
+    dispatch(addNewBook([uuidv4(), state.bookTitle, state.bookAuthor, 'API']));
     form.reset();
   };
 
