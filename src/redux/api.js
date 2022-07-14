@@ -6,10 +6,8 @@ const changeFormat = (obj) => {
   const response = [];
   Object.entries(obj).forEach((data) => {
     response.push({
+      ...data[1][0],
       id: data[0],
-      title: data[1][0].title,
-      author: data[1][0].author,
-      category: 'API',
     });
   });
   return response;
