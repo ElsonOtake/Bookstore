@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { axiosGet } from '../api';
+import { axiosGet, axiosPost } from '../api';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
@@ -27,10 +27,13 @@ const initialState = {
 
 export const retrieveBooks = createAsyncThunk(
   RETRIEVE,
-  async () => {
+  async (_, { dispatch }) => {
     const res = await axiosGet()
       .then(
-        (data) => data.json(),
+        (data) => dispatch({
+          type: RETRIEVE,
+          payload: data,
+        }),
       );
     return res;
   },
@@ -39,7 +42,6 @@ export const retrieveBooks = createAsyncThunk(
 export const bookSlice = createSlice({
   name: 'bookSlice',
   initialState,
-  reducers: {},
   extraReducers: {
     [retrieveBooks.pending]: (state) => ({
       ...state,
@@ -57,14 +59,31 @@ export const bookSlice = createSlice({
   },
 });
 
-export const bookAPIReducer = bookSlice.reducer;
+export const booksAPIReducer = bookSlice.reducer;
 
-export const addNewBook = (title, author) => ({
-  type: ADD,
-  id: uuidv4(),
-  title,
-  author,
-});
+// export const addNewBook = (title, author) => ({
+//   type: ADD,
+//   id: uuidv4(),
+//   title,
+//   author,
+// });
+
+export const addNewBook = createAsyncThunk(
+  ADD,
+  // async () => {
+  async ([title, author]) => {
+    const res = await axiosPost({
+      item_id: uuidv4(),
+      category: 'API',
+      title,
+      author,
+    });
+    // .then(
+    //   (data) => data.json(),
+    // );
+    return res;
+  },
+);
 
 export const removeBook = (id) => ({
   type: REMOVE,
