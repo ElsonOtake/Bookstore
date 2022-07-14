@@ -23,7 +23,7 @@ const AddBook = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(addNewBook(state.bookTitle, state.bookAuthor));
+    dispatch(addNewBook([state.bookTitle, state.bookAuthor]));
     form.reset();
   };
 
