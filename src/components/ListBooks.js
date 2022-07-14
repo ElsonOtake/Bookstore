@@ -4,7 +4,7 @@ import Book from './Book';
 import { retrieveBooks } from '../redux/books/Books';
 
 const ListBooks = () => {
-  const booksData = useSelector((state) => state.booksReducer);
+  const booksData = useSelector((state) => state.booksAPIReducer.entities.payload);
   const dispatch = useDispatch();
 
   useEffect(() => {
