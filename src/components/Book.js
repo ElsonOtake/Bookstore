@@ -10,9 +10,22 @@ const Book = (props) => {
   const { id, title, author } = props;
   const progress = Math.round(Math.random() * 100);
   const chapter = Math.round(progress / 2 + 1);
+  const category = [
+    'Action',
+    'Fiction',
+    'Adventure',
+    'Classics',
+    'Detective',
+    'Comic Book',
+    'Fantasy',
+    'Romance',
+    'Children',
+    'Poetry',
+  ];
+
   return (
     <article>
-      <p className="category text_style_5">Action</p>
+      <p className="category text_style_5">{category[Math.floor(Math.random() * 10)]}</p>
       <h2 className={id}>{title}</h2>
       <p className="text_style_6">{author}</p>
       <span>
