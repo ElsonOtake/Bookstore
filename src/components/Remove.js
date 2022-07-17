@@ -6,7 +6,7 @@ const Remove = () => {
 
   const removeBookById = (event) => {
     const { target } = event;
-    const id = target.parentNode.parentNode.firstChild.classList[0];
+    const id = target.parentNode.parentNode.firstChild.nextSibling.classList[0];
     dispatch(removeBook(id));
   };
 
