@@ -19,8 +19,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo (Netlify)](https://elsonotake-bookstore.netlify.app/)
-[Live Demo (Heroku)](https://elsonotake-bookstore.herokuapp.com/)
+[Live Demo](https://elsonotake-bookstore.netlify.app/)
 
 
 ## Getting Started
