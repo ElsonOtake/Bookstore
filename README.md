@@ -20,6 +20,7 @@
 ## Live Demo (if available)
 
 [Live Demo (Netlify)](https://elsonotake-bookstore.netlify.app/)
+
 [Live Demo (Heroku)](https://elsonotake-bookstore.herokuapp.com/)
 
 
@@ -64,7 +65,7 @@ Cloning a repository
 
 - GitHub: [elsonotake](https://github.com/elsonotake)
 - Twitter: [@elsonotake](https://twitter.com/elsonotake)
-- LinkedIn: [Elson Otake](https://linkedin.com/in/elson-otake)
+- LinkedIn: [elsonotake](https://linkedin.com/in/elsonotake)
 
 
 ## 🤝 Contributing
