@@ -19,8 +19,8 @@
 
 ## Live Demo (if available)
 
-[Netlify]()
-[Heroku]()
+[Live Demo (Netlify)](https://elsonotake-bookstore.netlify.app/)
+[Live Demo (Heroku)](https://elsonotake-bookstore.herokuapp.com/)
 
 
 ## Getting Started
@@ -64,7 +64,7 @@ Cloning a repository
 
 - GitHub: [elsonotake](https://github.com/elsonotake)
 - Twitter: [@elsonotake](https://twitter.com/elsonotake)
-- LinkedIn: [Elson Otake](https://linkedin.com/in/elson-otake-0b5b9138)
+- LinkedIn: [Elson Otake](https://linkedin.com/in/elson-otake)
 
 
 ## 🤝 Contributing
