@@ -63,7 +63,7 @@ Cloning a repository
 
 - GitHub: [elsonotake](https://github.com/elsonotake)
 - Twitter: [@elsonotake](https://twitter.com/elsonotake)
-- LinkedIn: [elsonotake](https://linkedin.com/in/elson-otake)
+- LinkedIn: [elsonotake](https://linkedin.com/in/elsonotake)
 
 
 ## 🤝 Contributing
