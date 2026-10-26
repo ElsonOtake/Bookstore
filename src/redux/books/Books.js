@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { axiosGet, axiosPost, axiosDelete } from '../api';
+import { getBooks, saveBook, deleteBook } from '../api';
 
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
@@ -12,7 +12,7 @@ const initialState = {
 export const retrieveBooks = createAsyncThunk(
   RETRIEVE,
   async (_, { dispatch }) => {
-    const res = await axiosGet()
+    const res = await getBooks()
       .then(
         (data) => dispatch({
           type: RETRIEVE,
@@ -26,7 +26,7 @@ export const retrieveBooks = createAsyncThunk(
 export const addNewBook = createAsyncThunk(
   ADD,
   async ([itemId, title, author, category], { dispatch }) => {
-    const res = await axiosPost({
+    const res = await saveBook({
       item_id: itemId,
       category,
       title,
@@ -48,7 +48,7 @@ export const addNewBook = createAsyncThunk(
 export const removeBook = createAsyncThunk(
   REMOVE,
   async (id, { dispatch }) => {
-    const res = await axiosDelete(id)
+    const res = await deleteBook(id)
       .then(
         () => dispatch({
           type: REMOVE,

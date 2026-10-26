@@ -10,11 +10,10 @@ const AddBook = () => {
   });
 
   const dispatch = useDispatch();
-
-  const form = document.querySelector('form');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
 
   const handleInputChange = (event) => {
-    event.preventDefault();
     const { value, name } = event.target;
     setState({
       ...state,
@@ -22,10 +21,25 @@ const AddBook = () => {
     });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    dispatch(addNewBook([uuidv4(), state.bookTitle, state.bookAuthor, 'API']));
-    form.reset();
+    if (saving) return;
+    const title = state.bookTitle.trim();
+    const author = state.bookAuthor.trim();
+    if (!title || !author) {
+      setError('Enter a book title and author.');
+      return;
+    }
+    setSaving(true);
+    setError('');
+    try {
+      await dispatch(addNewBook([uuidv4(), title, author, 'Uncategorized'])).unwrap();
+      setState({ bookTitle: '', bookAuthor: '' });
+    } catch {
+      setError('Unable to save the book. Check that browser storage is available and try again.');
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -34,6 +48,9 @@ const AddBook = () => {
         name="bookTitle"
         type="text"
         placeholder="Book title"
+        aria-label="Book title"
+        value={state.bookTitle}
+        disabled={saving}
         onChange={handleInputChange}
         required
       />
@@ -41,13 +58,18 @@ const AddBook = () => {
         name="bookAuthor"
         type="text"
         placeholder="Author"
+        aria-label="Author"
+        value={state.bookAuthor}
+        disabled={saving}
         onChange={handleInputChange}
         required
       />
       <input
         type="submit"
-        value="ADD BOOK"
+        value={saving ? 'SAVING...' : 'ADD BOOK'}
+        disabled={saving}
       />
+      {error && <p role="alert">{error}</p>}
     </form>
   );
 };
