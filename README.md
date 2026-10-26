@@ -6,6 +6,10 @@
 - Add a book
 - Remove a selected book
 
+Books are saved in this browser's local storage and remain available after reloading.
+Collections are specific to the browser and site address; clearing site data removes them.
+The original hosted book API is no longer available.
+
 
 ## Built With
 

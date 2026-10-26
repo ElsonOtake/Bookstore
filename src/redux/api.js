@@ -1,41 +1,19 @@
-import axios from 'axios';
+const storageKey = 'bookstore.books';
 
-const urlBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/BluHDvdJs2fJBhr1nW5x/books';
-
-const changeFormat = (obj) => {
-  const response = [];
-  Object.entries(obj).forEach((data) => {
-    response.push({
-      ...data[1][0],
-      id: data[0],
-    });
-  });
-  return response;
+export const getBooks = async () => {
+  const books = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  if (!Array.isArray(books)) {
+    throw new Error('Invalid saved book collection.');
+  }
+  return books;
 };
 
-export const axiosGet = async () => {
-  try {
-    const response = await axios.get(urlBooks);
-    return changeFormat(response.data);
-  } catch (error) {
-    throw new Error(error);
-  }
+export const saveBook = async ({ item_id: id, ...book }) => {
+  const books = await getBooks();
+  localStorage.setItem(storageKey, JSON.stringify([...books, { id, ...book }]));
 };
 
-export const axiosPost = async (obj = {}) => {
-  try {
-    const response = await axios.post(urlBooks, obj);
-    return response.data;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
-export const axiosDelete = async (id) => {
-  try {
-    const response = await axios.delete(`${urlBooks}/${id}`);
-    return response.data;
-  } catch (error) {
-    throw new Error(error);
-  }
+export const deleteBook = async (id) => {
+  const books = await getBooks();
+  localStorage.setItem(storageKey, JSON.stringify(books.filter((book) => book.id !== id)));
 };
