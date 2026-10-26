@@ -1,0 +1,30 @@
+src/redux/api.js
+  s_5740480ca2d672::t_6170e35f413fdd 1,3-6,8,11-13,16-18
+src/components/AddBook.test.js
+  s_5740480ca2d672::t_82c4a833a195cb 2-70
+  s_5740480ca2d672::t_30832966e12fbf 1
+  s_5740480ca2d672::t_7b0d25b200cc87 71-73
+  s_5740480ca2d672::t_d0e6276d15827a 74-80
+src/redux/books/Books.js
+  s_5740480ca2d672::t_a4125c88fe569a 2,15,29,51
+README.md
+  s_5740480ca2d672::t_a4125c88fe569a 9-12
+src/components/AddBook.js
+  s_5740480ca2d672::t_a4125c88fe569a 13-14,24,26-42,51-53,61-63,69-70,72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b775114ea7f6754f173aba9b3df5d65927823e36",
+  "prompts": {},
+  "sessions": {
+    "s_5740480ca2d672": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1793a-cfb3-7930-8d2d-0ccff6e8c0b7",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
