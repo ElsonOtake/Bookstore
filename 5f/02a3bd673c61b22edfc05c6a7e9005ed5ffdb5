@@ -1,0 +1,19 @@
+.github/workflows/linters.yml
+  s_5740480ca2d672::t_d8936b043b0348 11,13-14,16,26,28-29,31,40,42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5f02a3bd673c61b22edfc05c6a7e9005ed5ffdb5",
+  "prompts": {},
+  "sessions": {
+    "s_5740480ca2d672": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1793a-cfb3-7930-8d2d-0ccff6e8c0b7",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Elson Otake <elsonotake@yahoo.com.br>"
+    }
+  }
+}
